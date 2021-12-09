@@ -125,9 +125,7 @@ link_directories(${LIBRARY_OUTPUT_PATH})
 
 add_library(${Libname} ${Sources})
 
-set_target_properties(${Libname} PROPERTIES
-    VERSION ${PROJECT_VERSION}
-    SOVERSION 1)
+set_target_properties(${Libname} PROPERTIES VERSION ${PROJECT_VERSION})
 
 target_link_libraries(${Libname} Threads::Threads)
 
