@@ -125,6 +125,10 @@ link_directories(${LIBRARY_OUTPUT_PATH})
 
 add_library(${Libname} ${Sources})
 
+set_target_properties(${Libname} PROPERTIES
+    VERSION ${PROJECT_VERSION}
+    SOVERSION 1)
+
 target_link_libraries(${Libname} Threads::Threads)
 
 if(CMAKE_SYSTEM_NAME MATCHES "Linux")
