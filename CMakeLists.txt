@@ -145,11 +145,11 @@ install(TARGETS ${Libname}
           COMPONENT Library
 )
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/zenoh-pico.h
-          DESTINATION include
+          DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
           COMPONENT Headers
 )
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/zenoh-pico
-          DESTINATION include
+          DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
           COMPONENT Headers
 )
 
