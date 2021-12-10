@@ -15,6 +15,8 @@ cmake_minimum_required(VERSION 3.8)
 
 project(libzenohpico VERSION 0.6.0 LANGUAGES C)
 
+include(GNUInstallDirs)
+
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
   set(CMAKE_C_STANDARD 99)
@@ -125,7 +127,10 @@ link_directories(${LIBRARY_OUTPUT_PATH})
 
 add_library(${Libname} ${Sources})
 
-set_target_properties(${Libname} PROPERTIES VERSION ${PROJECT_VERSION})
+set_target_properties(${Libname} PROPERTIES 
+          VERSION ${PROJECT_VERSION}
+          PUBLIC_HEADER ${PublicHeaders}
+)
 
 target_link_libraries(${Libname} Threads::Threads)
 
@@ -134,8 +139,9 @@ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
 endif()
 
 install(TARGETS ${Libname}
-          LIBRARY DESTINATION lib
-          ARCHIVE DESTINATION lib
+          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+          PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
           COMPONENT Library
 )
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/zenoh-pico.h
