@@ -51,8 +51,9 @@ void* _zn_create_endpoint_udp(const char *s_addr, const char *port)
 
     if (getaddrinfo(s_addr, port, &hints, &addr) < 0)
         return NULL;
-
-    freeaddrinfo(addr->ai_next);
+    
+    if (addr->ai_next)
+        freeaddrinfo(addr->ai_next);
     return addr;
 }
 

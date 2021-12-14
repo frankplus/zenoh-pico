@@ -139,7 +139,6 @@ _z_zint_result_t _z_zint_decode(_z_zbuf_t *zbf)
         r_uint8 = _z_uint8_decode(zbf);
         _ASSURE_RESULT(r_uint8, r, _z_err_t_PARSE_ZINT);
 
-        _Z_DEBUG_VA("zint c = 0x%x\n", c);
         r.value.zint = r.value.zint | (((z_zint_t)r_uint8.value.uint8 & 0x7f) << i);
         _Z_DEBUG_VA("current zint  = %zu\n", r.value.zint);
         i += 7;
